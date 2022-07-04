@@ -67,6 +67,10 @@ every post is linked to a user, and in a larger/more complex application, those 
 in nature. In the event that large files must be stored (Webms or other video files, for example), a File Store could be used, but this is not mandatory and will
 not be implemented in the code as this is meant to be a basic app for demonstration purposes only.
 
+A Pivot Table (or "Through Table") is used to model the Follower relationship between users (represented as a self-referential Many-to-Many relationship through the
+User_Followers table in the code, please see User_Follower.js for details). The followedId and followerId are foreign keys (they are technically also both primary keys)
+referencing the users table's primary key (id). These columns are created automatically by Sequelize upon table creation.
+
 Please note that code for posting messages has been kept as simple as possible as per requester's instructions, and also due to time constraints. 
 Thus, things such as input validation and error checking/handling will not be done for those endpoints. Basic validation has been done for authentication endpoints.
 
