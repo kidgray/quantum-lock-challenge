@@ -129,12 +129,6 @@ Once a token is created, it will be valid for 12 hours (this is just so you don'
 To retrieve all posts by a user, send a GET request to /posts/:userId. Payload and response:
 
 ![Post Retrieval Endpoint Test](./Post%20Retrieval%20Endpoint%20Test.png "Post Retrieval Endpoint Test")
-
-## Retrieving all Posts
-
-To retrieve ALL posts, send a GET request to /posts. No payload is required. This is mostly just a testing endpoint, as retrieving
-all posts would become unwieldy in an app with millions of followers and posts. In any case, I've added some users and posts just to show off
-the functionality:
 # Q & A
 [(Back to top)](#table-of-contents)
 

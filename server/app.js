@@ -114,8 +114,7 @@ app.get('/posts/:userId', async (req, res) => {
 })
 
 // Make a post
-app.post('/posts', auth, async(req, res) => {
-    console.log(req);
+app.post('/posts/:userId', auth, async(req, res) => {
     const newPost = await Post.create(req.body);
 
     res.send(newPost);
