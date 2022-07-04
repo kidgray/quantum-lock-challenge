@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const sequelize = require('./database');
 const auth = require('./auth');
-const { User, Post, User_Follower } = require('./models/index.js');
+const { User, Post } = require('./models/index.js');
 
 dotenv.config();
 const app = express();
