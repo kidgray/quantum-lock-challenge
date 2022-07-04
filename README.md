@@ -11,6 +11,7 @@ by other users will be taken into consideration.
 - [Diagram](#diagram)
 - [Schema](#schema)
 - [Explanation](#explanation)
+- [Q&A](#q%20&%20a)
 
 # Installation
 [(Back to top)](#table-of-contents)
@@ -54,7 +55,7 @@ The following parameters will be observed (please note that due to time constrai
 
 - A userbase of approx. 300m users will be assumed (approx. population of the U.S.)
 - Approximately 100m concurrent users will be assumed (~1/3 of total userbase)
-- Around 150m daily posts (which may be text, images, videos, URLs, ...)
+- Around 150m daily posts (we will assume all posts are text-only for simplicity's sake)
 
 A basic Visio network/database diagram will be included along with the code files. The logic/data flow of the diagram is as follows:
 
@@ -65,16 +66,24 @@ every post is linked to a user, and in a larger/more complex application, those 
 in nature. In the event that large files must be stored (Webms or other video files, for example), a File Store could be used, but this is not mandatory and will
 not be implemented in the code as this is meant to be a basic app for demonstration purposes only.
 
-It should be noted that the posts, followers, and followed users in the users table will be stored as comma-separated strings. This is sub-optimal from a performance
-standpoint, as a more optimal solution would be to use lookup/pivot tables that link, for example, users and followers in this way:
+Please note that all code has been kept as simple as possible as per requester's instructions, and also due to time constraints. Thus, things such as input validation
+and error checking/handling will not be done.
 
-users_followers table
+# Q & A
+[(Back to top)](#table-of-contents)
 
-id_user | id_follower
----------------------
-1       |       2
-2       |       3
-4       |       1
-...     |       ...
+### Why did you use an auto-incremented INTEGER for ids? Isn't that a bit unsafe?
 
-However, as this project is only meant to be a demo, I will be using the comma-separated string method (again, due to time constraints).
+Typically I would use something like a UUID for ids, but SQLite doesn't support a BOOLEAN(16) type for ids, and storing UUIDs in a STRING
+would complicate the implementation of the pivot tables, so I decided to keep it simple and just use auto-incremented integers.
+
+### Why did you use the STRING type for Posts? Posts can contain images or videos too, can't they?
+
+This is a similar question to the one above, and the answer is similar as well. I'd typically use something like a BLOB for a post,
+but for simplicity's sake I decided to stick to just the bare basics of what constitutes a post (text). This should suffice for the 
+purposes of this exercise.
+
+### Why are you using sync() instead of migrations? Aren't migrations better and more reliable/efficient?
+
+Yes, but they're also more time-consuming to set up, and unfortunately, I'm on a bit of a tight schedule.
+
