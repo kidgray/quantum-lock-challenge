@@ -4,14 +4,7 @@ const User = require('./User');
 
 class User_Follower extends Model {}
 
-User_Follower.init({
-    // follower_id: {
-    //     type: DataTypes.INTEGER
-    // },
-    // followed_id: {
-    //     type: DataTypes.INTEGER
-    // }
-}, {
+User_Follower.init({}, {
     sequelize,
     modelName: 'user_follower',
 });
